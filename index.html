@@ -60,7 +60,7 @@ if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
     
     if (user.photo_url) {  
         const userPhoto = document.getElementById('userPhoto');  
-        userPhoto.src = user.photo_url; // Устанавливаем URL аватарки 
+        userPhoto.src = 'https://via.placeholder.com/60'; // Устанавливаем URL аватарки 
         userPhoto.onload = function() {
             userPhoto.style.display = 'block'; // Показываем аватарку, если загрузка прошла успешно
         };
