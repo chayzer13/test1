@@ -49,27 +49,32 @@
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script> 
     <script> 
-        const tg = window.Telegram.WebApp; 
+           <script>
+       const tg = window.Telegram.WebApp;
 
-        // Проверяем, есть ли данные о пользователе
-        if (tg.initDataUnsafe && tg.initDataUnsafe.user) { 
-            const user = tg.initDataUnsafe.user; 
+       // Проверяем, есть ли данные о пользователе
+       if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
+           const user = tg.initDataUnsafe.user;
 
-            // Устанавливаем имя пользователя
-            document.getElementById('userName').textContent = user.first_name; 
+           // Логируем данные пользователя
+           console.log('Данные пользователя:', user);
 
-            // Проверяем наличие URL аватарки
-            if (user.photo_url) { 
-                const userPhoto = document.getElementById('userPhoto'); 
-                userPhoto.src = user.photo_url; // Устанавливаем URL аватарки
-                userPhoto.style.display = 'block'; // Показываем аватарку
-            } else {
-                console.log("Аватарка не найдена.");
-            }
-        } else { 
-            document.getElementById('userName').textContent = "Гость"; 
-            console.log("Данные пользователя не найдены."); 
-        } 
+           // Устанавливаем имя пользователя
+           document.getElementById('userName').textContent = user.first_name;
+
+           // Проверяем наличие URL аватарки
+           if (user.photo_url) {
+               const userPhoto = document.getElementById('userPhoto');
+               userPhoto.src = user.photo_url; // Устанавливаем URL аватарки
+               userPhoto.style.display = 'block'; // Показываем аватарку
+           } else {
+               console.log("Аватарка не найдена.");
+           }
+       } else {
+           document.getElementById('userName').textContent = "Гость";
+           console.log("Данные пользователя не найдены.");
+       }
+   </script>
     </script> 
 </body> 
 </html>
