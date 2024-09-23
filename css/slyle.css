@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    background: linear-gradient(black, #00615B);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-family: "Inter", sans-serif;
+}
+
+.container {
+    text-align: center;
+    color: white;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+}
+
+.boxgm {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 20px;
+    width: calc(100% - 10px);
+    max-width: 400px;
+    position: absolute;
+    margin-top: 25px;
+    height: 83px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center; 
+}
+
+.boxgm .user-status {
+    font-size: 0.8rem;
+    margin-top: 5px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.boxgm img {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    margin-right: 10px;
+    display: block; 
+}
+
+.user-name {
+    font-size: 1.2rem;
+}
+
+.lega {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    cursor: pointer;
+    margin-right: -25px;
+    margin-top: -5px;
+}
+
+.lega img {
+    height: 40px;
+    width: 40px;
+    
+}
+
+.legaa {
+    font-size: 0.8rem;
+    
+}
+
+.lega p{
+    margin-right: 12px;
+    font-family: "Inter";
+    font-weight: bold;
+}
+
+.box {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    padding: 20px;
+    width: 100%;
+    max-width: 430px;
+    margin-top: 124px;
+    height: calc(100vh - 124px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    align-items: center; 
+    text-align: center;
+    position: relative;
+}
+
+.card{
+    background-color: #120F10;
+    border-radius: 20px;
+    padding: 20px;
+    width: 100%; 
+    max-width: 430px; 
+    height: 85px; 
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    margin-top: 10px; 
+    position: relative;
+}
+
+.card .card-map img {
+    width: 100%; 
+    max-width: 432px; 
+    margin-left: 35%;
+}
+
+.card .card-about img{
+    z-index: 1;
+    position: absolute;
+    left: 20px;
+    top: 0;
+    margin-top: 15px;
+    width: 30px
+}
+
+.card .card-about p{ 
+    position: absolute;
+    left: 60px;
+    top: 0;
+    margin-top: 20px;
+    font-family: "Inter";
+    font-weight: bold;
+}
+
+.card .balanse-card p{ 
+    position: absolute;
+    left: 20px;
+    top: 0;
+    margin-top: 50px;
+    font-family: "Inter";
+    font-weight: bold;
+}
+
+.datecar {
+    position: absolute;
+    top: 16px; /* Отступ сверху */
+    left: 10px; /* Отступ слева */
+    display: flex; /* Используем flex для управления расположением */
+    justify-content: flex-start; /* Выравниваем текст влево */
+    align-items: center; /* Выравниваем по вертикали */
+}
+
+.date-card-maus p,
+.card-about .date-card-dm p {
+    font-size: 0.9rem; /* Устанавливаем размер шрифта */
+    margin: 0 255px; /* Добавляем отступы между текстами */
+}
+
+@media only screen and(max-width: 768px) {
+    .card {
+        height: 75px; /* Уменьшаем высоту карточки */
+    }
+
+    .card .card-about img {
+        width: 40px; /* Уменьшаем размер изображения */
+    }
+
+    .card .card-about p,
+    .card .balanse-card p {
+        font-size: 0.9rem; /* Уменьшаем размер текста */
+    }
+
+    .datecar {
+        top: 5px; /* Уменьшаем отступ сверху */
+    }
+
+    .date-card-maus p,
+    .card-about .date-card-dm p {
+        font-size: 0.8rem; /* Уменьшаем размер шрифта */
+    }
+}
+
+
+@media only screen and(max-width: 480px) {
+    .card {
+        height: 65px; /* Дальнейшее уменьшение высоты карточки */
+    }
+
+    .card .card-about img {
+        width: 30px; /* Дальнейшее уменьшение размера изображения */
+    }
+
+    .card .card-about p,
+    .card .balanse-card p {
+        font-size: 0.8rem; /* Дальнейшее уменьшение текста */
+    }
+
+    .datecar {
+        top: 3px; /* Дальнейшее уменьшение отступа сверху */
+    }
+
+    .date-card-maus p,
+    .card-about .date-card-dm p {
+        font-size: 0.7rem; /* Дальнейшее уменьшение размера шрифта */
+    }
+}
