@@ -58,18 +58,19 @@ if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
     // Отладка URL аватарки
     console.log("User photo URL:", user.photo_url);
     
-    if (user.photo_url) {  
-        const userPhoto = document.getElementById('userPhoto');  
-        userPhoto.src = 'https://via.placeholder.com/60'; // Устанавливаем URL аватарки 
-        userPhoto.onload = function() {
-            userPhoto.style.display = 'block'; // Показываем аватарку, если загрузка прошла успешно
-        };
-        userPhoto.onerror = function() {
-            console.log("Ошибка загрузки аватарки."); // Если аватарка не загрузилась
-        };
-    } else { 
-        console.log("Аватарка не найдена."); 
-    } 
+if (user.photo_url) {  
+    const userPhoto = document.getElementById('userPhoto');  
+    userPhoto.src = user.photo_url; // Устанавливаем URL аватарки 
+    userPhoto.onload = function() {
+        userPhoto.style.display = 'block'; // Показываем аватарку, если загрузка прошла успешно
+    };
+    userPhoto.onerror = function() {
+        console.log("Ошибка загрузки аватарки."); // Если аватарка не загрузилась
+    };
+} else { 
+    console.log("Аватарка не найдена."); 
+}
+
 } else {  
     document.getElementById('userName').textContent = "Гость";  
     console.log("Данные пользователя не найдены.");  
