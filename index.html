@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TAPOLKA</title>
-    <link rel="stylesheet" href="./css/slyle.css">
+    <link rel="stylesheet" href="./css/sLyle.css">
 </head>
 <body>
     <div class="container">
@@ -18,7 +18,7 @@
     <script>
         const tg = window.Telegram.WebApp;
 
-        console.log(tg.initDataUnsafe); // Логируем данные
+        console.log("initDataUnsafe:", tg.initDataUnsafe); // Логируем данные
 
         if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
             const user = tg.initDataUnsafe.user;
@@ -30,7 +30,7 @@
                 userPhoto.style.display = 'block';
             }
         } else {
-            console.log("Данные пользователя не найдены.");
+            console.log("Данные пользователя не найдены или initDataUnsafe отсутствует.");
         }
     </script>
 </body>
