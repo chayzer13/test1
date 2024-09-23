@@ -50,26 +50,30 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>  
     <script>  
         const tg = window.Telegram.WebApp;  
- 
-        // Проверяем, есть ли данные о пользователе 
-        if (tg.initDataUnsafe && tg.initDataUnsafe.user) {  
-            const user = tg.initDataUnsafe.user;  
- 
-            // Устанавливаем имя пользователя 
-            document.getElementById('userName').textContent = user.first_name;  
- 
-            // Проверяем наличие URL аватарки 
-            if (user.photo_url) {  
-                const userPhoto = document.getElementById('userPhoto');  
-                userPhoto.src = user.photo_url; // Устанавливаем URL аватарки 
-                userPhoto.style.display = 'block'; // Показываем аватарку 
-            } else { 
-                console.log("Аватарка не найдена."); 
-            } 
-        } else {  
-            document.getElementById('userName').textContent = "Гость";  
-            console.log("Данные пользователя не найдены.");  
-        }  
+
+if (tg.initDataUnsafe && tg.initDataUnsafe.user) {  
+    const user = tg.initDataUnsafe.user;  
+    document.getElementById('userName').textContent = user.first_name;  
+
+    // Отладка URL аватарки
+    console.log("User photo URL:", user.photo_url);
+    
+    if (user.photo_url) {  
+        const userPhoto = document.getElementById('userPhoto');  
+        userPhoto.src = user.photo_url; // Устанавливаем URL аватарки 
+        userPhoto.onload = function() {
+            userPhoto.style.display = 'block'; // Показываем аватарку, если загрузка прошла успешно
+        };
+        userPhoto.onerror = function() {
+            console.log("Ошибка загрузки аватарки."); // Если аватарка не загрузилась
+        };
+    } else { 
+        console.log("Аватарка не найдена."); 
+    } 
+} else {  
+    document.getElementById('userName').textContent = "Гость";  
+    console.log("Данные пользователя не найдены.");  
+}  
     </script>  
 </body>  
 </html>  
