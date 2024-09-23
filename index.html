@@ -1,84 +1,42 @@
-<!DOCTYPE html>  
-<html lang="en">  
-<head>  
-    <meta charset="UTF-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>TAPOLKA</title>  
-    <link rel="stylesheet" href="./css/style.css">  
-</head>  
-<body>  
-    <div class="container">  
-        <div class="boxgm">  
-            <div class="user-info">  
-                <img id="userPhoto" alt="Аватар пользователя" style="display: none; width: 60px; height: 60px; border-radius: 50%;">  
-                <div>  
-                    <span class="user-name" id="userName">Имя пользователя</span>  
-                    <p class="user-status">Статус: Бомж</p>  
-                </div>  
-            </div>  
-            <div class="lega">  
-                <a href="">  
-                    <img src="./img/Trophy.png" alt="liga">  
-                    <p class="legaa">Лига</p>  
-                </a>  
-            </div>  
-        </div>  
-        <div class="box">  
-            <div class="card">  
-                <div class="card-map">  
-                    <img src="./img/image2.png" alt="">  
-                </div>  
-                <div class="card-about">  
-                    <img src="./img/MasterCard.png" alt="">  
-                    <p class="number-card">.... 3052</p>  
-                    <div class="balance-card">  
-                        <p class="balance-card">Баланс: хххх Coins</p>  
-                    </div>  
-                    <div class="datecar">  
-                        <div class="date-card-maus">  
-                            <p class="date-maus">D/M</p>  
-                        </div>  
-                        <div class="date-card-dm">  
-                            <p class="date-dm">07/30</p>  
-                        </div>  
-                    </div>  
-                </div>  
-            </div>  
-        </div>  
-    </div>  
-  
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram WebApp Example</title>
     <script>
-        // Инициализация объекта Telegram WebApp
-const tg = window.Telegram.WebApp;
+        window.addEventListener('DOMContentLoaded', function () {
+            // Проверяем, доступен ли объект Telegram
+            const tg = window.Telegram.WebApp;
 
-// Проверка, получены ли данные пользователя
-if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
-    const user = tg.initDataUnsafe.user;
+            // Получаем данные пользователя
+            const user = tg.initDataUnsafe.user;
 
-    // Устанавливаем имя пользователя
-    const userNameElement = document.getElementById('userName');
-    userNameElement.textContent = user.first_name || "Пользователь";
+            if (user) {
+                // Отображаем имя пользователя
+                document.getElementById('userName').textContent = `Привет, ${user.first_name}!`;
 
-    // Проверка наличия аватарки
-    if (user.photo_url) {
-        const userPhotoElement = document.getElementById('userPhoto');
-        
-        // Установка аватарки и показ, если она загружена
-        userPhotoElement.src = user.photo_url;
-        userPhotoElement.style.display = 'block';
-
-        // Логирование успешного получения аватарки
-        console.log("Аватарка загружена:", user.photo_url);
-    } else {
-        console.log("У пользователя нет аватарки.");
-    }
-
-} else {
-    // Если данные пользователя не получены
-    console.log("Не удалось получить данные пользователя.");
-    document.getElementById('userName').textContent = "Гость";
-}
+                // Отображаем аватарку, если она существует
+                if (user.photo_url) {
+                    document.getElementById('avatar').src = user.photo_url;
+                    document.getElementById('avatar').alt = `${user.first_name}'s avatar`;
+                }
+            } else {
+                document.getElementById('userName').textContent = "Пользователь не найден";
+            }
+        });
     </script>
-</body>  
+</head>
+<body>
+    <h1 id="userName">Загрузка...</h1>
+    <img id="avatar" alt="User avatar" style="display: none; width: 100px; height: 100px; border-radius: 50%;" />
+
+    <script>
+        // Показать аватарку, если она есть
+        const imgElement = document.getElementById('avatar');
+        if (imgElement.src) {
+            imgElement.style.display = 'block';
+        }
+    </script>
+</body>
 </html>
