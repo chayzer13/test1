@@ -1,102 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TAPOLKA</title>
-    <link rel="stylesheet" href="./css/slyle.css">
-</head>
-<body>
-    <div class="container">
-        <div class="boxgm">
-            <div class="user-info">
-                <img id="userPhoto" src="./img/ava.png" alt="Аватар пользователя" style="display: none;">
-                <div>
-                    <span class="user-name" id="userName">Имя пользователя</span>
-                    <p class="user-status">Статус: Бомж</p>
-                </div>
-            </div>
-            <div class="lega">
-                <a href="">
-                    <img src="./img/Trophy.png" alt="lega">
-                    <p class="legaa">Лига</p>
-                </a>
-            </div>
-        </div>
-        <div class="box">
-            <div class="card">
-                <div class="card-map">
-                    <img src="./img/image 2.png" alt="">
-                </div>
-                <div class="card-about">
-                    <img src="./img/MasterCard.png" alt="">
-                    <p class="nubmer-card">.... 3052</p>
-                    <div class="balanse-card">
-                        <p class="balanse-card">Баланс: хххх Coins</p>
-                    </div>
-                    <div class="datecar">
-                        <div class="date-card-maus">
-                            <p class="date-maus">D/M</p>
-                        </div>
-                        <div class="date-card-dm">
-                            <p class="date-dm">07/30</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script>
-        const tg = window.Telegram.WebApp;
-
-        // Проверяем, есть ли данные о пользователе
-        if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
-            const user = tg.initDataUnsafe.user;
-
-            // Устанавливаем имя пользователя
-            document.getElementById('userName').textContent = user.first_name;
-
-            // Получаем ID пользователя
-            const userId = user.id;
-
-            // Функция для получения аватарки
-            async function getUserProfilePhoto(userId) {
-                const token = '6994034230:AAH7teRuQQC20yObS-3Fk0KoekMfj8LL2Og'; // Ваш токен бота
-                const url = https://api.telegram.org/bot${token}/getUserProfilePhotos?user_id=${userId};
-
-                try {
-                    const response = await fetch(url);
-                    const data = await response.json();
-
-                    if (data.ok && data.result.total_count > 0) {
-                        const photo = data.result.photos[0][0]; // Получаем первую фотографию
-                        const fileId = photo.file_id;
-
-                        // Получаем файл
-                        const fileResponse = await fetch(https://api.telegram.org/bot${token}/getFile?file_id=${fileId});
-                        const fileData = await fileResponse.json();
-
-                        if (fileData.ok) {
-                            const filePath = fileData.result.file_path;
-                            const photoUrl = https://api.telegram.org/file/bot${token}/${filePath};
-                            document.getElementById('userPhoto').src = photoUrl; // Устанавливаем URL аватарки
-                                                    document.getElementById('userPhoto').style.display = 'block'; // Показываем аватарку
-                        }
-                    } else {
-                        console.log("Аватарка не найдена.");
-                    }
-                } catch (error) {
-                    console.error("Ошибка при получении аватарки:", error);
-                }
-            }
-
-            getUserProfilePhoto(userId);
-        } else {
-            document.getElementById('userName').textContent = "Гость";
-            console.log("Данные пользователя не найдены.");
-        }
-    </script>
-</body>
-</html>
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>TAPOLKA</title>  
+    <link rel="stylesheet" href="./css/slyle.css">  
+</head>  
+<body>  
+    <div class="container">  
+        <div class="boxgm">  
+            <div class="user-info">  
+                <img id="userPhoto" src="./img/ava.png" alt="Аватар пользователя" style="display: none;">  
+                <div>  
+                    <span class="user-name" id="userName">Имя пользователя</span>  
+                    <p class="user-status">Статус: Бомж</p>  
+                </div>  
+            </div>  
+            <div class="lega">  
+                <a href="">  
+                    <img src="./img/Trophy.png" alt="lega">  
+                    <p class="legaa">Лига</p>  
+                </a>  
+            </div>  
+        </div>  
+        <div class="box">  
+            <div class="card">  
+                <div class="card-map">  
+                    <img src="./img/image 2.png" alt="">  
+                </div>  
+                <div class="card-about">  
+                    <img src="./img/MasterCard.png" alt="">  
+                    <p class="nubmer-card">.... 3052</p>  
+                    <div class="balanse-card">  
+                        <p class="balanse-card">Баланс: хххх Coins</p>  
+                    </div>  
+                    <div class="datecar">  
+                        <div class="date-card-maus">  
+                            <p class="date-maus">D/M</p>  
+                        </div>  
+                        <div class="date-card-dm">  
+                            <p class="date-dm">07/30</p>  
+                        </div>  
+                    </div>  
+                </div>  
+            </div>  
+        </div>  
+    </div>  
+ 
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>  
+    <script>  
+        const tg = window.Telegram.WebApp;  
+ 
+        // Проверяем, есть ли данные о пользователе 
+        if (tg.initDataUnsafe && tg.initDataUnsafe.user) {  
+            const user = tg.initDataUnsafe.user;  
+ 
+            // Устанавливаем имя пользователя 
+            document.getElementById('userName').textContent = user.first_name;  
+ 
+            // Проверяем наличие URL аватарки 
+            if (user.photo_url) {  
+                const userPhoto = document.getElementById('userPhoto');  
+                userPhoto.src = user.photo_url; // Устанавливаем URL аватарки 
+                userPhoto.style.display = 'block'; // Показываем аватарку 
+            } else { 
+                console.log("Аватарка не найдена."); 
+            } 
+        } else {  
+            document.getElementById('userName').textContent = "Гость";  
+            console.log("Данные пользователя не найдены.");  
+        }  
+    </script>  
+</body>  
+</html>  
