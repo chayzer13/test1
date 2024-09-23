@@ -10,7 +10,7 @@
             const tg = window.Telegram.WebApp;
 
             // Получаем данные пользователя
-            const user = tg.initDataUnsafe.user;
+            const user = tg.initDataUnsafe?.user;
 
             if (user) {
                 // Отображаем имя пользователя
@@ -18,8 +18,10 @@
 
                 // Отображаем аватарку, если она существует
                 if (user.photo_url) {
-                    document.getElementById('avatar').src = user.photo_url;
-                    document.getElementById('avatar').alt = `${user.first_name}'s avatar`;
+                    const avatarElement = document.getElementById('avatar');
+                    avatarElement.src = user.photo_url;
+                    avatarElement.alt = `${user.first_name}'s avatar`;
+                    avatarElement.style.display = 'block'; // Отображаем изображение
                 }
             } else {
                 document.getElementById('userName').textContent = "Пользователь не найден";
@@ -30,13 +32,5 @@
 <body>
     <h1 id="userName">Загрузка...</h1>
     <img id="avatar" alt="User avatar" style="display: none; width: 100px; height: 100px; border-radius: 50%;" />
-
-    <script>
-        // Показать аватарку, если она есть
-        const imgElement = document.getElementById('avatar');
-        if (imgElement.src) {
-            imgElement.style.display = 'block';
-        }
-    </script>
 </body>
 </html>
