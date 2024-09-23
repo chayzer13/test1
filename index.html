@@ -4,46 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TAPOLKA</title>
-    <link rel="stylesheet" href="./css/slyle.css"> <!-- Исправлено на 'style.css' -->
+    <link rel="stylesheet" href="./css/slyle.css">
 </head>
 <body>
     <div class="container">
-        <div class="boxgm">
-            <div class="user-info">
-                <img id="userPhoto" src="./img/ava.png" alt="Аватар пользователя" style="display: none;">
-                <div>
-                    <span class="user-name" id="userName">Имя пользователя</span>
-                    <p class="user-status">Статус: Бомж</p>
-                </div>
-            </div>
-            <div class="lega">
-                <a href="">
-                    <img src="./img/Trophy.png" alt="lega">
-                    <p class="legaa">Лига</p>
-                </a>
-            </div>
-        </div>
-        <div class="box">
-            <div class="card">
-                <div class="card-map">
-                    <img src="./img/image 2.png" alt="">
-                </div>
-                <div class="card-about">
-                    <img src="./img/MasterCard.png" alt="">
-                    <p class="nubmer-card">.... 3052</p>
-                    <div class="balanse-card">
-                        <p class="balanse-card">Баланс: хххх Coins</p>
-                    </div>
-                    <div class="datecar">
-                        <div class="date-card-maus">
-                            <p class="date-maus">D/M</p>
-                        </div>
-                        <div class="date-card-dm">
-                            <p class="date-dm">07/30</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="user-info">
+            <img id="userPhoto" src="./img/ava.png" alt="Аватар пользователя" style="display: none;">
+            <span class="user-name" id="userName">Имя пользователя</span>
         </div>
     </div>
 
@@ -51,26 +18,18 @@
     <script>
         const tg = window.Telegram.WebApp;
 
-        // Проверяем, есть ли данные о пользователе
+        console.log(tg.initDataUnsafe); // Логируем данные
+
         if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
             const user = tg.initDataUnsafe.user;
-
-            // Логируем данные пользователя
-            console.log('Данные пользователя:', user);
-
-            // Устанавливаем имя пользователя
             document.getElementById('userName').textContent = user.first_name;
 
-            // Проверяем наличие URL аватарки
             if (user.photo_url) {
                 const userPhoto = document.getElementById('userPhoto');
-                userPhoto.src = user.photo_url; // Устанавливаем URL аватарки
-                userPhoto.style.display = 'block'; // Показываем аватарку
-            } else {
-                console.log("Аватарка не найдена.");
+                userPhoto.src = user.photo_url;
+                userPhoto.style.display = 'block';
             }
         } else {
-            document.getElementById('userName').textContent = "Гость";
             console.log("Данные пользователя не найдены.");
         }
     </script>
